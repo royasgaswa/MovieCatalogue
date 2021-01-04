@@ -70,43 +70,26 @@ class DetailMovieActivity : AppCompatActivity() {
         tv_content_movie.text = movie.overview
         Log.d("back", movie.backdropPath)
         Glide.with(this)
-            .load(movie.backdropPath)
+            .load("https://image.tmdb.org/t/p/w500/"+movie.backdropPath)
             .apply(
                 RequestOptions.placeholderOf(R.drawable.ic_loading)
                     .error(R.drawable.ic_error)
             )
             .into(img_movie_main)
         Glide.with(this)
-            .load(movie.posterPath)
+            .load("https://image.tmdb.org/t/p/w500/"+movie.posterPath)
             .apply(
                 RequestOptions.placeholderOf(R.drawable.ic_loading)
                     .error(R.drawable.ic_error)
             )
-            .into(img_movie_second)
+            .into(img_movie_photo)
+        val state=movie.isFavorite
+        setFavoriteState(state)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_detail, menu)
         this.menu = menu
-        viewModel.getMovie.observe(this, Observer { movie ->
-            if (movie != null) {
-                when (movie) {
-                    is Resource.Loading -> progress_bar.visibility = View.VISIBLE
-                    is Resource.Success -> if (movie.data != null) {
-                        progress_bar.visibility = View.GONE
-                        populateMovie(movie.data)
-                    }
-                    is Resource.Error -> {
-                        progress_bar.visibility = View.GONE
-                        Toast.makeText(
-                            applicationContext,
-                            "Terjadi kesalahan",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-            }
-        })
         return true
     }
 

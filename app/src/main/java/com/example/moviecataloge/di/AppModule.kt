@@ -11,8 +11,10 @@ import com.example.moviecataloge.presentation.ui.tvshow.TvshowViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-val useCaseModule= module {
-    factory <CatalogueUseCase>{ CatalogueInteractor(get()) }
+
+
+val useCaseModule = module {
+    factory<CatalogueUseCase>{ CatalogueInteractor(get()) }
 }
 
 val viewModelModule= module {

@@ -9,7 +9,7 @@ interface MovieDao {
     @Query("SELECT * FROM movieentities")
     fun getMovies(): Flow<List<MovieEntity>>
 
-    @Query("SELECT * FROM movieentities where favorite=1")
+    @Query("SELECT * FROM movieentities where favorite = 1")
     fun getFavoriteMovie(): Flow<List<MovieEntity>>
 
     @Query("SELECT * FROM movieentities WHERE id = :id")

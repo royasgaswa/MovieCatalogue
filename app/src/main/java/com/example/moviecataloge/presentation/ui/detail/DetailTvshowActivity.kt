@@ -70,43 +70,26 @@ class DetailTvshowActivity : AppCompatActivity() {
         rating.text = tvshow.rate.toString()
         tv_content_tvshow.text = tvshow.overview
         Glide.with(this)
-            .load(tvshow.backdropPath)
+            .load("https://image.tmdb.org/t/p/w500/"+tvshow.backdropPath)
             .apply(
                 RequestOptions.placeholderOf(R.drawable.ic_loading)
                     .error(R.drawable.ic_error)
             )
             .into(img_tvshow_main)
         Glide.with(this)
-            .load(tvshow.posterPath)
+            .load("https://image.tmdb.org/t/p/w500/"+tvshow.posterPath)
             .apply(
                 RequestOptions.placeholderOf(R.drawable.ic_loading)
                     .error(R.drawable.ic_error)
             )
             .into(img_tvshow_second)
+        val state=tvshow.isFavorite
+        setFavoriteState(state)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_detail, menu)
         this.menu = menu
-        viewModel.getTvshow.observe(this, Observer { tvshow ->
-            if (tvshow != null) {
-                when (tvshow) {
-                    is Resource.Loading -> progress_bar.visibility = View.VISIBLE
-                    is Resource.Success -> if (tvshow.data != null) {
-                        progress_bar.visibility = View.GONE
-                        populateTvshow(tvshow.data)
-                    }
-                    is Resource.Error -> {
-                        progress_bar.visibility = View.GONE
-                        Toast.makeText(
-                            applicationContext,
-                            "Terjadi kesalahan",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                }
-            }
-        })
         return true
     }
 

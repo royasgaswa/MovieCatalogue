@@ -3,6 +3,7 @@
  import com.example.moviecataloge.data.source.local.entity.MovieEntity
  import com.example.moviecataloge.data.source.remote.response.movie.MovieResponse
  import com.example.moviecataloge.domain.model.MovieEntityDomain
+ import com.example.moviecataloge.presentation.model.MovieEntityPresentation
 
 
  object MovieDataMapper {
@@ -37,6 +38,19 @@
                  isFavorite = it.favorite
              )
          }
+     fun mapDomainToPresentation(input: List<MovieEntityDomain>):List<MovieEntityPresentation> =
+         input.map {
+             MovieEntityPresentation(
+                 id = it.id,
+                 overview = it.overview,
+                 title = it.title,
+                 posterPath = it.posterPath,
+                 backdropPath = it.backdropPath,
+                 releaseDate = it.releaseDate,
+                 rate = it.rate,
+                 isFavorite = it.isFavorite
+             )
+         }
      fun mapDomainToEntity(input:MovieEntityDomain)=MovieEntity(
          id = input.id,
          overview = input.overview,
@@ -46,6 +60,17 @@
          date = input.releaseDate,
          rate = input.rate,
          favorite = input.isFavorite
+     )
+
+     fun mapPresentationToDomain(input:MovieEntityPresentation)=MovieEntityDomain(
+         id = input.id,
+         overview = input.overview,
+         title = input.title,
+         posterPath = input.posterPath,
+         backdropPath = input.backdropPath,
+         releaseDate = input.releaseDate,
+         rate = input.rate,
+         isFavorite = input.isFavorite
      )
 
 }

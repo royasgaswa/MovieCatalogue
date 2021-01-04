@@ -57,7 +57,7 @@ class TvshowAdapter :
                     context.startActivity(intent, option.toBundle())
                 }
                 Glide.with(context)
-                    .load(tvshow.posterPath)
+                    .load("https://image.tmdb.org/t/p/w500/"+tvshow.posterPath)
                     .apply(
                         RequestOptions.placeholderOf(R.drawable.ic_loading)
                             .error(R.drawable.ic_error)

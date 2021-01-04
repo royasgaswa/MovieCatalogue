@@ -19,6 +19,8 @@ import java.util.concurrent.TimeUnit
 val databaseModule= module {
     factory {
         get<CatalogueDatabase>().movieDao()
+    }
+    factory {
         get<CatalogueDatabase>().tvshowDao()
     }
     single {
@@ -47,13 +49,13 @@ val networkModule = module {
 }
 val repositoryModule = module {
     single { LocalDataSource(mMovieDao =  get(),mTvshowDao= get()) }
-    single { RemoteDataSource(get()) }
+    single { RemoteDataSource(apiService =  get()) }
     factory { AppExecutors() }
     single<ICatalogueRepository> {
         CatalogueRepository(
-            get(),
-            get(),
-            get()
+            remoteDataSource =  get(),
+            localDataSource =  get(),
+            appExecutors =  get()
         )
     }
 }

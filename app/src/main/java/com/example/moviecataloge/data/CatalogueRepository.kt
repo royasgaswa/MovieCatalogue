@@ -1,5 +1,6 @@
 package com.example.moviecataloge.data
 
+import android.util.Log
 import com.example.moviecataloge.data.source.local.LocalDataSource
 import com.example.moviecataloge.data.source.local.entity.MovieEntity
 import com.example.moviecataloge.data.source.local.entity.TvshowEntity
@@ -54,7 +55,7 @@ class CatalogueRepository(
                 }
             }
 
-            override fun shouldFetch(data: MovieEntityDomain?): Boolean = data!=null
+            override fun shouldFetch(data: MovieEntityDomain?): Boolean = data==null
 
             override suspend fun createCall(): Flow<ApiResponse<List<MovieResponse?>>> =
                 remoteDataSource.getMovies()
@@ -95,7 +96,7 @@ class CatalogueRepository(
                 }
             }
 
-            override fun shouldFetch(data: TvshowEntityDomain?): Boolean = data!=null
+            override fun shouldFetch(data: TvshowEntityDomain?): Boolean = data==null
 
             override suspend fun createCall(): Flow<ApiResponse<List<TvshowResponse?>>> =
                 remoteDataSource.getTvshow()
