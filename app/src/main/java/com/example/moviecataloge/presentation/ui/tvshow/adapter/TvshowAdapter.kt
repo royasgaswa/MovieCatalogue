@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.moviecataloge.R
 import com.example.moviecataloge.domain.model.TvshowEntityDomain
+import com.example.moviecataloge.presentation.model.TvshowEntityPresentation
 import com.example.moviecataloge.presentation.ui.CastedContex
 import com.example.moviecataloge.presentation.ui.detail.DetailTvshowActivity
 import kotlinx.android.synthetic.main.items_tvshow.view.*
@@ -17,9 +18,9 @@ import kotlinx.android.synthetic.main.items_tvshow.view.*
 class TvshowAdapter :
     RecyclerView.Adapter<TvshowAdapter.TvshowViewHolder>() {
 
-    private var listData=ArrayList<TvshowEntityDomain>()
+    private var listData=ArrayList<TvshowEntityPresentation>()
 
-    fun setData(newListData:List<TvshowEntityDomain>?){
+    fun setData(newListData:List<TvshowEntityPresentation>?){
         if(newListData == null)return
         listData.clear()
         listData.addAll(newListData)
@@ -41,7 +42,7 @@ class TvshowAdapter :
     }
 
     class TvshowViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(tvshow: TvshowEntityDomain) {
+        fun bind(tvshow: TvshowEntityPresentation) {
             with(itemView) {
                 tv_title_tvShow.text = tvshow.name
                 tv_date_tvshow.text = tvshow.firstAirDate

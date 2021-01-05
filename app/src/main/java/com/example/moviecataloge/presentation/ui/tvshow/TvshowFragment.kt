@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.moviecataloge.R
 import com.example.moviecataloge.data.vo.Resource
 import com.example.moviecataloge.presentation.ui.tvshow.adapter.TvshowAdapter
+import com.example.moviecataloge.utils.TvshowDataMapper
 import kotlinx.android.synthetic.main.fragment_tvshow.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -31,23 +32,16 @@ class TvshowFragment : Fragment() {
         if (activity != null) {
             val tvshowAdapter = TvshowAdapter()
             progress_bar.visibility = View.VISIBLE
-            viewModel.getTvshow.observe(viewLifecycleOwner, Observer { tvshows ->
-                if (tvshows != null) {
-                    when (tvshows) {
-                        is Resource.Loading -> progress_bar.visibility = View.VISIBLE
-                        is Resource.Success -> {
-                            Log.d("TES", tvshows.data?.size.toString())
-                            progress_bar.visibility = View.GONE
-                            tvshowAdapter.setData(tvshows.data)
-                            tvshowAdapter.notifyDataSetChanged()
-                            rv_tvshow.scheduleLayoutAnimation()
-                        }
-                        is Resource.Error -> {
-                            progress_bar.visibility = View.GONE
-                            Toast.makeText(context, "Terjadi kesalahan", Toast.LENGTH_SHORT).show()
-                        }
-                    }
+            viewModel.getTvshow()
+            viewModel.isLoading.observe(viewLifecycleOwner,{state->
+                if (!state){
+                    progress_bar.visibility=View.GONE
                 }
+            })
+            viewModel.tvshow.observe(viewLifecycleOwner,{
+                tvshowAdapter.setData(it)
+                tvshowAdapter.notifyDataSetChanged()
+                rv_tvshow.scheduleLayoutAnimation()
             })
 
             with(rv_tvshow) {

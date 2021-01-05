@@ -14,8 +14,10 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.moviecataloge.R
 import com.example.moviecataloge.data.vo.Resource
 import com.example.moviecataloge.domain.model.TvshowEntityDomain
+import com.example.moviecataloge.presentation.model.TvshowEntityPresentation
 import com.example.moviecataloge.presentation.ui.detail.animation.SharedElementViewProvider
 import com.example.moviecataloge.presentation.ui.detail.viewmodel.DetailTvshowViewModel
+import com.example.moviecataloge.utils.TvshowDataMapper
 import kotlinx.android.synthetic.main.activity_detail_tvshow.*
 import kotlinx.android.synthetic.main.rate_star.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -40,29 +42,19 @@ class DetailTvshowActivity : AppCompatActivity() {
         if (extras != null) {
             val tvshowId = extras.getInt(EXTRA_TVSHOW)
             viewModel.setSelectedTvshow(tvshowId)
-            viewModel.getTvshow.observe(this, Observer { tvshow ->
-                if (tvshow != null) {
-                    when (tvshow) {
-                        is Resource.Loading -> progress_bar.visibility = View.VISIBLE
-                        is Resource.Success -> if (tvshow.data != null) {
-                            progress_bar.visibility = View.GONE
-                            populateTvshow(tvshow.data)
-                        }
-                        is Resource.Error -> {
-                            progress_bar.visibility = View.GONE
-                            Toast.makeText(
-                                applicationContext,
-                                "Terjadi kesalahan",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
+            viewModel.getDetailTvshow()
+            viewModel.isLoading.observe(this,{state->
+                if (!state){
+                    progress_bar.visibility=View.GONE
                 }
+            })
+            viewModel.tvshow.observe(this,{
+                populateTvshow(it)
             })
         }
     }
 
-    fun populateTvshow(tvshow: TvshowEntityDomain) {
+    fun populateTvshow(tvshow: TvshowEntityPresentation) {
         Log.d("tes", tvshow.firstAirDate + " " + tvshow.name)
         tv_title_tvshow.text = tvshow.name
         date_tvshow.text = tvshow.firstAirDate

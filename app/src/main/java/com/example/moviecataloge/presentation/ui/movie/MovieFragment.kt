@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.moviecataloge.R
 import com.example.moviecataloge.data.vo.Resource
 import com.example.moviecataloge.presentation.ui.movie.adapter.MovieAdapter
+import com.example.moviecataloge.utils.MovieDataMapper
 import kotlinx.android.synthetic.main.fragment_movie.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -30,24 +31,19 @@ class MovieFragment : Fragment() {
         if (activity != null) {
             val movieAdapter = MovieAdapter()
             progress_bar.visibility = View.VISIBLE
-            viewModel.getMovies.observe(viewLifecycleOwner, { movies ->
-                if (movies != null) {
-                    when (movies) {
-                        is Resource.Loading -> progress_bar.visibility = View.VISIBLE
-                        is Resource.Success -> {
-                            Log.d("TES", movies.data?.size.toString())
-                            progress_bar.visibility = View.GONE
-                            movieAdapter.setData(movies.data)
-                            movieAdapter.notifyDataSetChanged()
-                            rv_movie.scheduleLayoutAnimation()
-                        }
-                        is Resource.Error -> {
-                            progress_bar.visibility = View.GONE
-                            Toast.makeText(context, "Terjadi kesalahan", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-                }
+            viewModel.getMovies()
+            viewModel.movie.observe(viewLifecycleOwner,{movie->
+                movieAdapter.setData(movie)
+                movieAdapter.notifyDataSetChanged()
+                rv_movie.scheduleLayoutAnimation()
             })
+            viewModel.isLoading.observe(viewLifecycleOwner, { state ->
+                if (!state) {
+                    progress_bar.visibility = View.GONE
+                }
+
+            })
+
 
 
             with(rv_movie) {

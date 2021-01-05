@@ -12,10 +12,13 @@ import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.moviecataloge.R
+import com.example.moviecataloge.data.source.local.entity.MovieEntity
 import com.example.moviecataloge.data.vo.Resource
 import com.example.moviecataloge.domain.model.MovieEntityDomain
+import com.example.moviecataloge.presentation.model.MovieEntityPresentation
 import com.example.moviecataloge.presentation.ui.detail.animation.SharedElementViewProvider
 import com.example.moviecataloge.presentation.ui.detail.viewmodel.DetailMovieViewModel
+import com.example.moviecataloge.utils.MovieDataMapper
 import kotlinx.android.synthetic.main.activity_detail_movie.*
 import kotlinx.android.synthetic.main.rate_star.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -41,29 +44,19 @@ class DetailMovieActivity : AppCompatActivity() {
         if (extras != null) {
             val movieId = extras.getInt(EXTRA_MOVIE)
             viewModel.setSelectedMovie(movieId)
-            viewModel.getMovie.observe(this, Observer { movie ->
-                if (movie != null) {
-                    when (movie) {
-                        is Resource.Loading -> progress_bar.visibility = View.VISIBLE
-                        is Resource.Success -> if (movie.data != null) {
-                            progress_bar.visibility = View.GONE
-                            populateMovie(movie.data)
-                        }
-                        is Resource.Error -> {
-                            progress_bar.visibility = View.GONE
-                            Toast.makeText(
-                                applicationContext,
-                                "Terjadi kesalahan",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    }
+            viewModel.getDetailMovie()
+            viewModel.isLoading.observe(this,{state->
+                if (!state){
+                    progress_bar.visibility=View.GONE
                 }
+            })
+            viewModel.movie.observe(this,{
+                populateMovie(it)
             })
         }
     }
 
-    fun populateMovie(movie: MovieEntityDomain) {
+    fun populateMovie(movie: MovieEntityPresentation) {
         tv_title_movie.text = movie.title
         rating.text = movie.rate
         tv_date_movie.text = movie.releaseDate

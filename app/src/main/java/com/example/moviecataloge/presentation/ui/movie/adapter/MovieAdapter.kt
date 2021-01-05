@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.moviecataloge.R
 import com.example.moviecataloge.domain.model.MovieEntityDomain
+import com.example.moviecataloge.presentation.model.MovieEntityPresentation
 import com.example.moviecataloge.presentation.ui.CastedContex
 import com.example.moviecataloge.presentation.ui.detail.DetailMovieActivity
 import kotlinx.android.synthetic.main.items_movie.view.*
@@ -17,9 +18,9 @@ import kotlinx.android.synthetic.main.items_movie.view.*
 
 class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
-    private var listData=ArrayList<MovieEntityDomain>()
+    private var listData=ArrayList<MovieEntityPresentation>()
 
-    fun setData(newListData:List<MovieEntityDomain>?){
+    fun setData(newListData:List<MovieEntityPresentation>?){
         if(newListData == null)return
         listData.clear()
         listData.addAll(newListData)
@@ -42,7 +43,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
     }
 
     class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(movie: MovieEntityDomain) {
+        fun bind(movie: MovieEntityPresentation) {
             with(itemView) {
                 tv_title_movie.text = movie.title
                 tv_movie_rating.text = movie.rate

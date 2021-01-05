@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.moviecataloge.R
 import com.example.moviecataloge.presentation.ui.tvshow.adapter.TvshowAdapter
+import com.example.moviecataloge.utils.TvshowDataMapper
 import kotlinx.android.synthetic.main.fragment_favorite_tvshow.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -30,9 +31,14 @@ class FavoriteTvshowFragment : Fragment() {
         if (activity != null) {
             val tvshowFavoriteAdapter = TvshowAdapter()
             progress_bar.visibility = View.VISIBLE
-            viewModel.getFavoriteTvshow.observe(viewLifecycleOwner, Observer { tvshows ->
-                progress_bar.visibility = View.GONE
-                tvshowFavoriteAdapter.setData(tvshows)
+            viewModel.getFavoriteTvshow()
+            viewModel.isLoading.observe(viewLifecycleOwner,{state->
+                if (!state){
+                    progress_bar.visibility=View.GONE
+                }
+            })
+            viewModel.tvshows.observe(viewLifecycleOwner,{
+                tvshowFavoriteAdapter.setData(it)
                 tvshowFavoriteAdapter.notifyDataSetChanged()
                 rv_favorite_tvshow.scheduleLayoutAnimation()
             })

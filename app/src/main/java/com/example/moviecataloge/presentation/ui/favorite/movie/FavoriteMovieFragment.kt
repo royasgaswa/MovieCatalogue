@@ -9,8 +9,10 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.moviecataloge.R
 import com.example.moviecataloge.presentation.ui.movie.adapter.MovieAdapter
+import com.example.moviecataloge.utils.MovieDataMapper
 import kotlinx.android.synthetic.main.fragment_favorite_movie.*
-import kotlinx.android.synthetic.main.fragment_movie.progress_bar
+import kotlinx.android.synthetic.main.fragment_favorite_movie.progress_bar
+import kotlinx.android.synthetic.main.fragment_movie.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -30,13 +32,18 @@ class FavoriteMovieFragment : Fragment() {
         if (activity != null) {
             val movieFavoriteAdapter = MovieAdapter()
             progress_bar.visibility = View.VISIBLE
-            viewModel.getFavoriteMovies.observe(viewLifecycleOwner, Observer { movies ->
+            viewModel.getFavoriteMovies()
+            viewModel.isLoading.observe(viewLifecycleOwner,{state->
+                if (!state){
+                    progress_bar.visibility=View.GONE
+                }
+            })
+            viewModel.movie.observe(viewLifecycleOwner,{
                 progress_bar.visibility = View.GONE
-                movieFavoriteAdapter.setData(movies)
+                movieFavoriteAdapter.setData(it)
                 movieFavoriteAdapter.notifyDataSetChanged()
                 rv_favorite_movie.scheduleLayoutAnimation()
             })
-
             with(rv_favorite_movie) {
                 layoutManager = GridLayoutManager(context, 2)
                 setHasFixedSize(true)
