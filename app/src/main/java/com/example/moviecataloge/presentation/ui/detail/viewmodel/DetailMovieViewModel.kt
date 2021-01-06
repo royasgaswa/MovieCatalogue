@@ -2,11 +2,11 @@ package com.example.moviecataloge.presentation.ui.detail.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.*
-import com.example.moviecataloge.data.vo.Resource
-import com.example.moviecataloge.domain.model.MovieEntityDomain
-import com.example.moviecataloge.domain.usecase.CatalogueUseCase
-import com.example.moviecataloge.presentation.model.MovieEntityPresentation
-import com.example.moviecataloge.utils.MovieDataMapper
+import com.example.moviecatalogue.core.data.vo.Resource
+import com.example.moviecatalogue.core.domain.model.MovieEntityDomain
+import com.example.moviecatalogue.core.domain.usecase.CatalogueUseCase
+import com.example.moviecatalogue.core.presentation.model.MovieEntityPresentation
+import com.example.moviecatalogue.core.utils.MovieDataMapper
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart

@@ -1,9 +1,9 @@
 package com.example.moviecataloge.presentation.ui.favorite.tvshow
 
 import androidx.lifecycle.*
-import com.example.moviecataloge.domain.usecase.CatalogueUseCase
-import com.example.moviecataloge.presentation.model.TvshowEntityPresentation
-import com.example.moviecataloge.utils.TvshowDataMapper
+import com.example.moviecatalogue.core.domain.usecase.CatalogueUseCase
+import com.example.moviecatalogue.core.presentation.model.TvshowEntityPresentation
+import com.example.moviecatalogue.core.utils.TvshowDataMapper
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart

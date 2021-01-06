@@ -12,13 +12,9 @@ import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.moviecataloge.R
-import com.example.moviecataloge.data.source.local.entity.MovieEntity
-import com.example.moviecataloge.data.vo.Resource
-import com.example.moviecataloge.domain.model.MovieEntityDomain
-import com.example.moviecataloge.presentation.model.MovieEntityPresentation
+import com.example.moviecatalogue.core.presentation.model.MovieEntityPresentation
 import com.example.moviecataloge.presentation.ui.detail.animation.SharedElementViewProvider
 import com.example.moviecataloge.presentation.ui.detail.viewmodel.DetailMovieViewModel
-import com.example.moviecataloge.utils.MovieDataMapper
 import kotlinx.android.synthetic.main.activity_detail_movie.*
 import kotlinx.android.synthetic.main.rate_star.*
 import org.koin.android.viewmodel.ext.android.viewModel

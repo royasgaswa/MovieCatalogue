@@ -2,10 +2,10 @@ package com.example.moviecataloge.presentation.ui.movie
 
 import android.util.Log
 import androidx.lifecycle.*
-import com.example.moviecataloge.data.vo.Resource
-import com.example.moviecataloge.domain.usecase.CatalogueUseCase
-import com.example.moviecataloge.presentation.model.MovieEntityPresentation
-import com.example.moviecataloge.utils.MovieDataMapper
+import com.example.moviecatalogue.core.data.vo.Resource
+import com.example.moviecatalogue.core.domain.usecase.CatalogueUseCase
+import com.example.moviecatalogue.core.presentation.model.MovieEntityPresentation
+import com.example.moviecatalogue.core.utils.MovieDataMapper
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onCompletion

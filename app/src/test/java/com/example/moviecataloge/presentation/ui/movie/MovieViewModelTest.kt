@@ -4,7 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.paging.PagedList
-import com.example.moviecataloge.data.CatalogueRepository
+import com.example.moviecatalogue.core.data.CatalogueRepository
 import com.example.moviecataloge.data.source.local.entity.MovieEntity
 import com.example.moviecataloge.data.vo.Resource
 import com.nhaarman.mockitokotlin2.verify
@@ -26,7 +26,7 @@ class MovieViewModelTest {
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Mock
-    private lateinit var catalogueRepository: CatalogueRepository
+    private lateinit var catalogueRepository: _root_ide_package_.com.example.moviecatalogue.core.data.CatalogueRepository
 
     @Mock
     private lateinit var observer: Observer<Resource<PagedList<MovieEntity>>>

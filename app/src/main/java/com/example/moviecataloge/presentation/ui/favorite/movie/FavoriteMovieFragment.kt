@@ -5,11 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.moviecataloge.R
-import com.example.moviecataloge.presentation.ui.movie.adapter.MovieAdapter
-import com.example.moviecataloge.utils.MovieDataMapper
+import com.example.moviecatalogue.core.presentation.adapter.MovieAdapter
 import kotlinx.android.synthetic.main.fragment_favorite_movie.*
 import kotlinx.android.synthetic.main.fragment_favorite_movie.progress_bar
 import kotlinx.android.synthetic.main.fragment_movie.*

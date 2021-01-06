@@ -3,11 +3,11 @@ package com.example.moviecataloge.presentation.ui.detail.viewmodel
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.*
-import com.example.moviecataloge.data.vo.Resource
-import com.example.moviecataloge.domain.model.TvshowEntityDomain
-import com.example.moviecataloge.domain.usecase.CatalogueUseCase
-import com.example.moviecataloge.presentation.model.TvshowEntityPresentation
-import com.example.moviecataloge.utils.TvshowDataMapper
+import com.example.moviecatalogue.core.data.vo.Resource
+import com.example.moviecatalogue.core.domain.model.TvshowEntityDomain
+import com.example.moviecatalogue.core.domain.usecase.CatalogueUseCase
+import com.example.moviecatalogue.core.presentation.model.TvshowEntityPresentation
+import com.example.moviecatalogue.core.utils.TvshowDataMapper
 import kotlinx.android.synthetic.main.activity_detail_tvshow.*
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onCompletion
@@ -38,7 +38,7 @@ class DetailTvshowViewModel (val catalogueUseCase: CatalogueUseCase) :
                             tvshow.data.let {
                                 _isLoading.postValue(false)
                                 val listData=ArrayList<TvshowEntityDomain>()
-                                listData.add(it)
+                                it?.let { it1 -> listData.add(it1) }
                                 _tvshow.postValue(TvshowDataMapper.mapDomainToPresentation(listData)[0])
                             }
                         }

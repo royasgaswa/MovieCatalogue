@@ -1,18 +1,13 @@
 package com.example.moviecataloge.presentation.ui.tvshow
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.moviecataloge.R
-import com.example.moviecataloge.data.vo.Resource
-import com.example.moviecataloge.presentation.ui.tvshow.adapter.TvshowAdapter
-import com.example.moviecataloge.utils.TvshowDataMapper
+import com.example.moviecatalogue.core.presentation.adapter.TvshowAdapter
 import kotlinx.android.synthetic.main.fragment_tvshow.*
 import org.koin.android.viewmodel.ext.android.viewModel
 

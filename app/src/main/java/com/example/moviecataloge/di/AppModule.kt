@@ -1,13 +1,13 @@
 package com.example.moviecataloge.di
 
-import com.example.moviecataloge.domain.usecase.CatalogueInteractor
-import com.example.moviecataloge.domain.usecase.CatalogueUseCase
 import com.example.moviecataloge.presentation.ui.detail.viewmodel.DetailMovieViewModel
 import com.example.moviecataloge.presentation.ui.detail.viewmodel.DetailTvshowViewModel
 import com.example.moviecataloge.presentation.ui.favorite.movie.FavoriteMovieViewModel
 import com.example.moviecataloge.presentation.ui.favorite.tvshow.FavoriteTvshowViewModel
 import com.example.moviecataloge.presentation.ui.movie.MovieViewModel
 import com.example.moviecataloge.presentation.ui.tvshow.TvshowViewModel
+import com.example.moviecatalogue.core.domain.usecase.CatalogueInteractor
+import com.example.moviecatalogue.core.domain.usecase.CatalogueUseCase
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
