@@ -3,7 +3,6 @@ package com.example.moviecatalogue.core.utils
 import com.example.moviecatalogue.core.data.source.local.entity.TvshowEntity
 import com.example.moviecatalogue.core.data.source.remote.response.tvshow.TvshowResponse
 import com.example.moviecatalogue.core.domain.model.TvshowEntityDomain
-import com.example.moviecatalogue.core.presentation.model.TvshowEntityPresentation
 
 
 object TvshowDataMapper {
@@ -38,9 +37,9 @@ object TvshowDataMapper {
                 isFavorite = it.favorite
             )
         }
-    fun mapDomainToPresentation(input:List<TvshowEntityDomain>):List<TvshowEntityPresentation> =
+    fun mapDomainToPresentation(input:List<TvshowEntityDomain>):List<com.example.moviecatalogue.base.presentation.model.TvshowEntityPresentation> =
         input.map {
-            TvshowEntityPresentation(
+            com.example.moviecatalogue.base.presentation.model.TvshowEntityPresentation(
                 id = it.id,
                 name = it.name,
                 firstAirDate = it.firstAirDate,
@@ -61,7 +60,7 @@ object TvshowDataMapper {
         backdropPath = input.backdropPath,
         favorite = input.isFavorite
     )
-    fun mapPresentationToDomain(input:TvshowEntityPresentation) = TvshowEntityDomain(
+    fun mapPresentationToDomain(input: com.example.moviecatalogue.base.presentation.model.TvshowEntityPresentation) = TvshowEntityDomain(
         id = input.id,
         name = input.name,
         firstAirDate = input.firstAirDate,

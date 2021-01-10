@@ -17,4 +17,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="favorite">Favorite</string>
     <string name="menu_favorite">Menu Favorite</string>
+    <string name="title_movies">Module Title</string>
+    <string name="title_tvshows">Module Title</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_detail">Detail</string>
 </resources>

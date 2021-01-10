@@ -3,7 +3,6 @@ package com.example.moviecataloge.presentation.ui.detail.viewmodel
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.example.moviecatalogue.core.data.CatalogueRepository
 import com.example.moviecataloge.data.source.local.entity.TvshowEntity
 import com.example.moviecataloge.data.vo.Resource
 import com.example.moviecataloge.utils.DataDummy
@@ -18,7 +17,7 @@ import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
 class DetailTvshowViewModelTest {
-    private lateinit var detailTvshowViewModel: DetailTvshowViewModel
+    private lateinit var detailTvshowViewModel: com.example.moviecatalogue.detail.viewmodel.DetailTvshowViewModel
     private val dummyTvshow = DataDummy.generateDummyTv()[0]
     private val tvshowId = dummyTvshow.id
 
@@ -33,7 +32,8 @@ class DetailTvshowViewModelTest {
 
     @Before
     fun setUp() {
-        detailTvshowViewModel = DetailTvshowViewModel(catalogueRepository)
+        detailTvshowViewModel =
+            com.example.moviecatalogue.detail.viewmodel.DetailTvshowViewModel(catalogueRepository)
         detailTvshowViewModel.setSelectedTvshow(tvshowId)
     }
 

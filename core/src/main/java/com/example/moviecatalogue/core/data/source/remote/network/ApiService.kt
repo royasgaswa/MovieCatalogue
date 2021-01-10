@@ -2,7 +2,6 @@ package com.example.moviecatalogue.core.data.source.remote.network
 
 import com.example.moviecatalogue.core.data.source.remote.response.movie.ResponseMovies
 import com.example.moviecatalogue.core.data.source.remote.response.tvshow.ResponseTvshow
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 

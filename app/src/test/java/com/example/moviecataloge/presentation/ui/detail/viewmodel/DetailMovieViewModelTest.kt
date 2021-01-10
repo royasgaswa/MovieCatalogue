@@ -3,7 +3,6 @@ package com.example.moviecataloge.presentation.ui.detail.viewmodel
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
-import com.example.moviecatalogue.core.data.CatalogueRepository
 import com.example.moviecataloge.data.source.local.entity.MovieEntity
 import com.example.moviecataloge.data.vo.Resource
 import com.example.moviecataloge.utils.DataDummy
@@ -18,7 +17,7 @@ import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
 class DetailMovieViewModelTest {
-    private lateinit var detailMovieViewModel: DetailMovieViewModel
+    private lateinit var detailMovieViewModel: com.example.moviecatalogue.detail.viewmodel.DetailMovieViewModel
     private val dummyMovie = DataDummy.generateDummyMovies()[0]
     private val movieId = dummyMovie.id
 
@@ -33,7 +32,8 @@ class DetailMovieViewModelTest {
 
     @Before
     fun setUp() {
-        detailMovieViewModel = DetailMovieViewModel(catalogueRepository)
+        detailMovieViewModel =
+            com.example.moviecatalogue.detail.viewmodel.DetailMovieViewModel(catalogueRepository)
         detailMovieViewModel.setSelectedMovie(movieId)
     }
 

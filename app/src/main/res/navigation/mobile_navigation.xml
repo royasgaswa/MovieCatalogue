@@ -6,19 +6,19 @@
 
     <fragment
         android:id="@+id/navigation_movie"
-        android:name="com.example.moviecataloge.presentation.ui.movie.MovieFragment"
+        android:name="com.example.moviecatalogue.movie.MovieFragment"
         android:label="@string/movies"
         tools:layout="@layout/fragment_movie" />
 
     <fragment
         android:id="@+id/navigation_tv"
-        android:name="com.example.moviecataloge.presentation.ui.tvshow.TvshowFragment"
+        android:name="com.example.moviecatalogue.tvshow.TvshowFragment"
         android:label="@string/tvshow"
         tools:layout="@layout/fragment_tvshow" />
 
     <fragment
         android:id="@+id/navigation_favorite"
-        android:name="com.example.moviecataloge.presentation.ui.favorite.FavoriteFragment"
+        android:name="com.example.moviecatalogue.favorite.FavoriteFragment"
         android:label="@string/favorite"
         tools:layout="@layout/fragment_favorite" />
 </navigation>

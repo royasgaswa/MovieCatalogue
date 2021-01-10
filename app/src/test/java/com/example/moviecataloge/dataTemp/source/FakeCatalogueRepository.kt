@@ -8,8 +8,8 @@ import com.example.moviecataloge.data.NetworkBoundResource
 import com.example.moviecataloge.data.source.local.LocalDataSource
 import com.example.moviecataloge.data.source.local.entity.MovieEntity
 import com.example.moviecataloge.data.source.local.entity.TvshowEntity
-import com.example.moviecataloge.data.source.remote.network.ApiResponse
 import com.example.moviecataloge.data.source.remote.RemoteDataSource
+import com.example.moviecataloge.data.source.remote.network.ApiResponse
 import com.example.moviecataloge.data.source.remote.response.movie.MovieResponse
 import com.example.moviecataloge.data.source.remote.response.tvshow.TvshowResponse
 import com.example.moviecataloge.data.vo.Resource

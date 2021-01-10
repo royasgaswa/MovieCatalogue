@@ -21,8 +21,7 @@ class MovieCataloge : Application(){
                     databaseModule,
                     networkModule,
                     repositoryModule,
-                    useCaseModule,
-                    viewModelModule
+                    useCaseModule
                 )
             )
         }

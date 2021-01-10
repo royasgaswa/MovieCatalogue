@@ -4,7 +4,6 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.paging.PagedList
-import com.example.moviecatalogue.core.data.CatalogueRepository
 import com.example.moviecataloge.data.source.local.entity.MovieEntity
 import com.example.moviecataloge.data.vo.Resource
 import com.nhaarman.mockitokotlin2.verify
@@ -20,7 +19,7 @@ import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
 class MovieViewModelTest {
-    private lateinit var movieViewModel: MovieViewModel
+    private lateinit var movieViewModel: com.example.moviecatalogue.movie.MovieViewModel
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -36,7 +35,7 @@ class MovieViewModelTest {
 
     @Before
     fun setUp() {
-        movieViewModel = MovieViewModel(catalogueRepository)
+        movieViewModel = com.example.moviecatalogue.movie.MovieViewModel(catalogueRepository)
     }
 
     @Test

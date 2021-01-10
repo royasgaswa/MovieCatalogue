@@ -3,7 +3,6 @@
  import com.example.moviecatalogue.core.data.source.local.entity.MovieEntity
  import com.example.moviecatalogue.core.data.source.remote.response.movie.MovieResponse
  import com.example.moviecatalogue.core.domain.model.MovieEntityDomain
- import com.example.moviecatalogue.core.presentation.model.MovieEntityPresentation
 
 
  object MovieDataMapper {
@@ -38,9 +37,9 @@
                  isFavorite = it.favorite
              )
          }
-     fun mapDomainToPresentation(input: List<MovieEntityDomain>):List<MovieEntityPresentation> =
+     fun mapDomainToPresentation(input: List<MovieEntityDomain>):List<com.example.moviecatalogue.base.presentation.model.MovieEntityPresentation> =
          input.map {
-             MovieEntityPresentation(
+             com.example.moviecatalogue.base.presentation.model.MovieEntityPresentation(
                  id = it.id,
                  overview = it.overview,
                  title = it.title,
@@ -62,7 +61,7 @@
          favorite = input.isFavorite
      )
 
-     fun mapPresentationToDomain(input:MovieEntityPresentation)=MovieEntityDomain(
+     fun mapPresentationToDomain(input: com.example.moviecatalogue.base.presentation.model.MovieEntityPresentation)=MovieEntityDomain(
          id = input.id,
          overview = input.overview,
          title = input.title,

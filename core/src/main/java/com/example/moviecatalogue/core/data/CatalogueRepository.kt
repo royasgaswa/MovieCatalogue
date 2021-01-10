@@ -1,6 +1,5 @@
 package com.example.moviecatalogue.core.data
 
-import android.util.Log
 import com.example.moviecatalogue.core.data.source.local.LocalDataSource
 import com.example.moviecatalogue.core.data.source.local.entity.MovieEntity
 import com.example.moviecatalogue.core.data.source.local.entity.TvshowEntity
